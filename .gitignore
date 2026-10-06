@@ -1,0 +1,14 @@
+# Prerequisites and Build outputs
+bin/
+build/
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+.cache/
+
+# Temporary / OS files
+.DS_Store
+*.swp
+*~

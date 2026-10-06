@@ -1,0 +1,42 @@
+# 03_game_sim.vey - Game Entity & Physics Simulation
+
+struct Vector2D {
+    x: float = 0.0
+    y: float = 0.0
+
+    fn length() => sqrt(x * x + y * y)
+}
+
+struct Player {
+    name: string
+    pos: Vector2D
+    health: int = 100
+    is_alive: bool = true
+
+    fn take_damage(dmg: int) {
+        health -= dmg
+        if health <= 0 {
+            health = 0
+            is_alive = false
+        }
+    }
+}
+
+fn main() {
+    println("=== Veyra Game Physics Simulator ===")
+
+    mut hero = Player("Shadow Knight", Vector2D(100.0, 50.0), 100, true)
+    println("Spawned hero: {hero.name} at ({hero.pos.x}, {hero.pos.y}) with HP: {hero.health}")
+
+    # Simulate 5 game ticks
+    for tick in 1..6 {
+        hero.pos.x += 12.5
+        hero.pos.y += 8.0
+        hero.take_damage(18)
+
+        let dist_from_origin = hero.pos.length()
+        println("Tick {tick}: Position=({hero.pos.x}, {hero.pos.y}) | HP={hero.health} | Dist={dist_from_origin}")
+    }
+
+    println("Simulation complete. Zero GC pauses, 100% deterministic C++ speed!")
+}

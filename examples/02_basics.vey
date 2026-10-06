@@ -1,0 +1,26 @@
+# 02_basics.vey - Lists, Loops, Functions & Math
+
+fn square(x: int) => x * x
+
+fn add(a: int, b: int) -> int {
+    return a + b
+}
+
+fn main() {
+    let scores = [95, 88, 72, 100, 64]
+    println("Scores list: {scores}")
+    println("Total scores count: {len(scores)}")
+
+    println("Iterating with enumerate:")
+    for i, score in enumerate(scores) {
+        println("  Player {i + 1} scored: {score} (squared: {square(score)})")
+    }
+
+    println("\nRange loop 1 to 5:")
+    for i in 1..6 {
+        println("  Step: {i}")
+    }
+
+    let sum = add(40, 2)
+    println("\nResult of add(40, 2): {sum}")
+}

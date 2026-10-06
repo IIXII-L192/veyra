@@ -1,0 +1,63 @@
+# 05_advanced_cpp.vey - Full C++ features in Veyra
+import math_helper
+
+enum GameState {
+    Menu,
+    Playing,
+    GameOver
+}
+
+struct Vec2 {
+    x: float = 0.0
+    y: float = 0.0
+
+    fn operator+(other: Vec2) -> Vec2 {
+        return Vec2(x + other.x, y + other.y)
+    }
+
+    fn operator*(scalar: float) -> Vec2 {
+        return Vec2(x * scalar, y * scalar)
+    }
+}
+
+struct Entity {
+    name: string
+    health: int = 100
+}
+
+struct Boss : Entity {
+    rage_mode: bool = false
+}
+
+fn main() {
+    println("=== Testing Advanced C++ Features in Veyra ===")
+
+    # 1. Operator Overloading
+    let v1 = Vec2(10.0, 20.0)
+    let v2 = Vec2(5.0, 5.0)
+    let v3 = v1 + v2
+    let scaled = v3 * 2.0
+    println("Vector Overload: ({v1.x}, {v1.y}) + ({v2.x}, {v2.y}) = ({v3.x}, {v3.y})")
+    println("Scaled by 2: ({scaled.x}, {scaled.y})")
+
+    # 2. Enums
+    let state = GameState.Playing
+    if state == GameState.Playing {
+        println("Enum status: Currently playing!")
+    }
+
+    # 3. Inheritance
+    let boss = Boss(Entity("Dragon Lord", 500), true)
+    println("Spawned boss: {boss.name} with HP: {boss.health} (Rage: {boss.rage_mode})")
+
+    # 4. Pointers and References
+    mut raw_val: int = 42
+    let ptr: *int = &raw_val
+    println("Pointer read: {*ptr}")
+    *ptr = 99;
+    println("Pointer write: raw_val is now {raw_val}")
+
+    # 5. Multi-file Import function
+    let dist = add_vectors(0.0, 0.0, 3.0, 4.0)
+    println("Imported math_helper distance: {dist}")
+}

@@ -1,0 +1,18 @@
+# 04_benchmark.vey - Performance benchmark
+
+fn main() {
+    println("Running Veyra Performance Benchmark...")
+    let start_time = time_now_ms()
+
+    mut total: int = 0
+    for i in 0..50000000 {
+        total += (i % 7)
+    }
+
+    let end_time = time_now_ms()
+    let elapsed = end_time - start_time
+
+    println("Computed 50,000,000 operations!")
+    println("Total: {total}")
+    println("Elapsed time: {elapsed} ms (Native C++20 speed)")
+}

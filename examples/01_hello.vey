@@ -1,0 +1,9 @@
+# 01_hello.vey - Super simple Veyra introductory script
+
+fn main() {
+    let name = "Veyra Developer"
+    let year = 2026
+
+    println("Hello, {name}!")
+    println("Welcome to the year {year}. Clean as Python, fast as C++!")
+}

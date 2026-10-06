@@ -1,0 +1,5 @@
+# math_helper.vey - Module to be imported
+
+fn add_vectors(x1: float, y1: float, x2: float, y2: float) -> float {
+    return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
+}
