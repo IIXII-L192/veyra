@@ -1,113 +1,111 @@
 # 🌌 Veyra (`.vey`)
 
-> **Simple as Python. Powerful as C++.**
+<p align="center">
+  <img src="assets/veyra_full.png" alt="Veyra Logo Banner" width="550" />
+</p>
 
-Veyra is a modern systems and game programming language that delivers the raw power, zero garbage collection pauses, and memory model of C++20, but with the concise, noise-free ergonomics of Python.
+<p align="center">
+  <strong>Native C++20 Speed • Python-Grade Simplicity • Zero GC Stutter • Cross-Platform</strong>
+</p>
+
+<p align="center">
+  <a href="https://veyra192.vercel.app"><img src="https://img.shields.io/badge/Website-veyra192.vercel.app-7C3AED?style=flat-square" alt="Website" /></a>
+  <a href="https://veyradocs192.vercel.app"><img src="https://img.shields.io/badge/Documentation-veyradocs192.vercel.app-EC4899?style=flat-square" alt="Docs" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License" /></a>
+</p>
 
 ---
 
-## ⚡ Highlights
+## ⚡ Why Veyra?
 
-- **1 Single Command to Run**: Just type `veyra app.vey` — it transpiles, caches, compiles, and runs instantly in one step (just like `python app.py`).
-- **Zero `std::` or `#include` Ceremony**: A rich, high-performance prelude is embedded directly into the compiler binary.
-- **50% Less Code**: No headers, no manual memory boilerplate, intuitive list literals `[1, 2, 3]`, ranges `0..10`, and string interpolation `"{var}"`.
-- **Game Dev Ready**: Zero GC stutter, value semantics, and seamless interop with Raylib, SDL, OpenGL, Box2D, and C/C++ libraries.
-- **Single-Binary Shipping**: The `veyra` compiler is a standalone binary with embedded prelude — anyone can download and run it immediately.
+**Veyra** is a statically typed systems programming language designed to unite the **effortless syntax and rapid developer velocity of Python** with the **deterministic performance, zero-cost abstractions, and hardware control of C++20/23**.
+
+- **Zero Boilerplate**: Write 1-line top-level scripts or complex engines without mandatory `int main()` wrappers.
+- **Pure Native Ahead-of-Time Compilation**: Compiles down to optimized machine code via C++20 with full `-O3`, loop unrolling, and SIMD vectorization.
+- **Zero Garbage Collection (RAII)**: Memory and resources are freed deterministically the instant they leave scope. Zero runtime stutter.
+- **Direct C/C++ Ecosystem Interop**: Seamlessly include any native C/C++ header (`cinclude <vector>`, `cinclude "raylib.h"`) and embed raw `cpp { ... }` blocks with zero marshalling overhead.
+- **Cross-Platform**: First-class support for **Windows 10/11**, **macOS (Apple Silicon & Intel)**, and **Linux**.
 
 ---
 
-## 📦 Quick Installation
+## 🚀 Quick Installation
 
+### Windows (PowerShell)
+```powershell
+irm https://veyra192.vercel.app/install.ps1 | iex
+```
+
+### Linux & macOS (Terminal)
 ```bash
-# Build and install to ~/.local/bin/veyra
+curl -fsSL https://veyra192.vercel.app/install.sh | bash
+```
+
+### Build from Source (All Platforms)
+```bash
 git clone https://github.com/IIXII-L192/veyra.git
 cd veyra
-./install.sh
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release -j$(nproc)
+sudo cmake --install build
 ```
 
 ---
 
-## 🚀 Usage
+## 💡 Quick Code Example
 
-### 1. Run a script directly (1 command):
+```veyra
+# Simple, expressive, blazing-fast native execution
+let name = "Veyra"
+println("Welcome to {name}!")
+
+let mut scores = [88, 95, 74, 99, 82]
+sort(scores)
+println("Sorted scores: {scores}")
+
+# Object-Oriented Struct with Methods
+struct Vec2:
+    pub x: double
+    pub y: double
+
+    pub fn operator+(self, other: Vec2) -> Vec2:
+        return Vec2 { x: self.x + other.x, y: self.y + other.y }
+
+let v1 = Vec2 { x: 10.0, y: 20.0 }
+let v2 = Vec2 { x: 5.0, y: 5.0 }
+let v3 = v1 + v2
+println("v3 = ({v3.x}, {v3.y})")
+```
+
+Run directly:
 ```bash
-veyra app.vey
-# or
 veyra run app.vey
 ```
 
-### 2. Compile to standalone optimized native binary:
+Compile standalone native binary:
 ```bash
-veyra build app.vey -o myapp -O3
-```
-
-### 3. Inspect generated C++20 code:
-```bash
-veyra emit app.vey
-```
-
-### 4. Create a new project:
-```bash
-veyra new my_project
+veyra build app.vey -O3 -o app
+./app
 ```
 
 ---
 
-## 📝 Syntax Quickstart
+## 🎨 Official Brand Assets & Media Kit
 
-### Hello World & String Interpolation
-```veyra
-fn main() {
-    let name = "Developer"
-    let year = 2026
-    println("Hello {name}, welcome to {year}!")
-}
-```
+All official vector graphics, brand lockups, and wallpapers are available in the [`assets/`](assets/) directory:
 
-### Loops, Lists & Functions
-```veyra
-fn square(x: int) => x * x
-
-fn main() {
-    let scores = [95, 88, 72, 100, 64]
-    
-    for i, score in enumerate(scores) {
-        println("Player {i + 1}: {score} (squared: {square(score)})")
-    }
-
-    for i in 1..6 {
-        println("Step: {i}")
-    }
-}
-```
-
-### Structs & Game Simulation
-```veyra
-struct Vector2D {
-    x: float = 0.0
-    y: float = 0.0
-
-    fn length() => sqrt(x * x + y * y)
-}
-
-struct Player {
-    name: string
-    pos: Vector2D
-    health: int = 100
-}
-
-fn main() {
-    mut hero = Player("Shadow Knight", Vector2D(100.0, 50.0), 100)
-    hero.pos.x += 15.0
-    println("Hero {hero.name} is at distance: {hero.pos.length()}")
-}
-```
+| Asset Name | Preview / Description | Direct Link |
+| :--- | :--- | :--- |
+| **Primary Brand Graphic** | Full color logomark with typography | [`assets/VΞYRΛ full.png`](assets/VΞYRΛ%20full.png) |
+| **Vector Logo (White)** | Scalable white SVG for dark backgrounds | [`assets/veyra_logo_white.svg`](assets/veyra_logo_white.svg) |
+| **Vector Logo (Black)** | Scalable black SVG for light backgrounds | [`assets/veyra_logo_black.svg`](assets/veyra_logo_black.svg) |
+| **Logomark Variations** | 6 color/style variations | [`assets/logo/`](assets/logo/) |
+| **Lockup Variations** | 6 logo + text compositions | [`assets/logo_and_text/`](assets/logo_and_text/) |
+| **Wordmark Typography** | 6 typographic wordmark styles | [`assets/text/`](assets/text/) |
 
 ---
 
-## 📂 Project Structure
+## 📚 Official Links
 
-- `include/veyra/`: AST, Lexer, Parser, Code Generator, Prelude, Compiler Driver
-- `src/`: Core implementation files
-- `examples/`: Ready-to-run `.vey` programs
-- `install.sh`: 1-command installer
+- **Documentation Portal**: [veyradocs192.vercel.app](https://veyradocs192.vercel.app)
+- **Official Website**: [veyra192.vercel.app](https://veyra192.vercel.app)
+- **Universal Installer**: [github.com/IIXII-L192/veyra-installer](https://github.com/IIXII-L192/veyra-installer)
